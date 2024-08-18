@@ -160,5 +160,6 @@ def Sum_of_primes(limit):
 
 
     return sum(Gen_Prime(limit))
+#There you go Daoud, I did them
 
 print(Sum_of_primes(2000000))
