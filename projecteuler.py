@@ -108,7 +108,6 @@ def Gen_nth_prime(num):
             primes.append(prime_candidate)
         prime_candidate += 2
     return primes[-1]
-
 def find_max_product(num_of_digits, number):
     final_result = 0
     for i in range(len(number) - num_of_digits + 1):
@@ -119,13 +118,12 @@ def find_max_product(num_of_digits, number):
             final_result = product
 
     return final_result
-    """writing this down for daoud: my line of thinking was to first check the first num_of_digits
+    """writing this down for Daoud: my line of thinking was to first check the first num_of_digits
       and if the result was greater than the current result, update it.
         Then for each digit, check the product multiplication of those digits was greater than the current max product.
         if it wasn't, move 1 step ahead so if digit1 * digit 2 was less than digit2 * digit 3 then max result would then 
         be digit 2 * digit 3(assuming num_of digits is two), this would go on until we have reached the last digit of the 
         large number.what you see here is me trying to implement this line of thinking"""
-
 def PythagoreanTriplet_finder(num):
     """Finds the pythagorean triplet of a given number then multiplies the triplets"""
     Candidate_A = 1
@@ -142,5 +140,25 @@ def PythagoreanTriplet_finder(num):
                     Candidate_B = Triplet_B
                     Candidate_C = Triplet_C
     return Triplet_A * Triplet_B * Triplet_C
-print(PythagoreanTriplet_finder(1000))
+def Sum_of_primes(limit):
+    """Finds the sum of all primes up to a given limit then adds them all up"""
+    def Gen_Prime(limit):
+        """Generates primes up to a given limit and actually uses sieve"""
+        is_prime_list = [True] * limit #Creates a list of booleans which are by default set to true
+                                   #(Saw This when scrolling of youtube, blew my mind)
+        is_prime_list[1] = False
+        is_prime_list[0] = False # 1 and 0 will mess with the program so it better to just manually change them 
+        for number in range(limit):
+            if is_prime_list[number] == True: #Checks if the number is marked as true
+                for j in range(number*number, limit, number):
+                    is_prime_list[j] = False
+        primes = []
+        for number in range(limit):
+            if is_prime_list[number] == True:
+                primes.append(number)
+        return primes  
 
+
+    return sum(Gen_Prime(limit))
+
+print(Sum_of_primes(2000000))
