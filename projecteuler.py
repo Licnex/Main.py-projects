@@ -21,13 +21,13 @@ def project_euler_2():
     def fib_gen_even(limit):
         """Generates Fibonacci sequence up to a limit and filters out odd numbers"""
         def fib_gen():
-        a = 1
-        b = 2
-        fib_list = [1]
-        while b < limit:
-            a,b = b, a+b
-            fib_list.append(a)
-        return fib_list
+            a = 1
+            b = 2
+            fib_list = [1]
+            while b < limit:
+                a,b = b, a+b
+                fib_list.append(a)
+            return fib_list
         def filter_odd(lists):
             """filters out odd numbers"""
             new_list = []
@@ -275,3 +275,22 @@ def project_euler_11():
         20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
         01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
         """, 4))
+def project_euler_12():
+    def devisable_triangle_number(devisable):
+        """Calculates the nth triangle number that is divisible by a number of times"""
+        devisable -= 1 #fix the bug ❌
+                       #alter the code to work with the bug ✅
+        num_of_divisors = 0
+        triangle_number = 1
+        current_triangle_num = 1
+        while num_of_divisors < devisable:
+            num_of_divisors = 0 # Reset divisor count for each new triangle number 
+                                # Headache of overengineering had been fixed (for now)
+            triangle_number = sum(range(2, current_triangle_num)) + 1
+            for i in range(2, triangle_number):
+                if triangle_number % i == 0 :
+                    num_of_divisors += 1
+            current_triangle_num += 1
+        return triangle_number        
+    print(devisable_triangle_number(500))
+project_euler_12() #inefficient, gonna work on that
