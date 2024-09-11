@@ -415,23 +415,29 @@ def project_euler_13():
     10))
 def project_euler_14():
     def largest_collatz_sequence(limit):
-        """Finds the largest collatz sequence under the given limit."""
+        """Finds the number under the given limit that produces the longest Collatz sequence.""" 
         def sequence_generator(number):
+            """Generates a a collatz sequence as a list from a given number"""
             sequence = []
-            while number != 4:
+            while number != 1:
+                sequence.append(number)
                 if number % 2 == 0:
-                    number = number//2
-                    sequence.append(number)
-                if number % 2 != 0:
+                    number = number // 2
+                else:
                     number = 3 * number + 1
-                    sequence.append(number)                   
+            sequence.append(1)  # Since the sequence allways ends with 1 (not including negatives)
             return sequence
-        max_sequence = []
+        
+        max_length = 0
         result = 0
+        
         for number in range(2, limit):
-            if len(sequence_generator(number)) > len(max_sequence):
-                sequence_generator(number) == max_sequence
+            seq = sequence_generator(number)
+            if len(seq) > max_length:
+                max_length = len(seq)
                 result = number
-        return result 
+        
+        
+        return result
     print(largest_collatz_sequence(1000000))
 project_euler_14()
