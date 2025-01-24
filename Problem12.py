@@ -1,7 +1,7 @@
 
 def devisable_triangle_number(required_devisor): 
         required_devisor -= 1 # Fix and figure out the bug ❌
-                       # Make code work with the bug ✅
+                              # Make code work with the bug ✅
         num_of_divisors = 0
         add_value = 1 #I'll use this to make the triangle number
         triangle_number = 1
@@ -15,4 +15,4 @@ def devisable_triangle_number(required_devisor):
                     num_of_divisors += 1
 
         return triangle_number
-print(devisable_triangle_number(200)) #Takes inconceivably long but works for now. 
+print(devisable_triangle_number(20)) #Takes inconceivably long but works for now. 

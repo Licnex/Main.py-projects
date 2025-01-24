@@ -9,18 +9,14 @@ def largest_collatz_sequence(limit):
                     number = number // 2
                 else:
                     number = 3 * number + 1
-            sequence.append(1)  # Since the sequence allways ends with 1 (not including negatives)
+            sequence.append(1)  # Since the sequence always ends with 1 (not including negatives)
             return sequence
-        
         max_length = 0
         result = 0
-        
         for number in range(2, limit):
             seq = sequence_generator(number)
             if len(seq) > max_length:
                 max_length = len(seq)
-                result = number
-        
-        
+                result = number 
         return result
 print(largest_collatz_sequence(1000000))        
